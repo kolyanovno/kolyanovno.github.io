@@ -39,16 +39,14 @@ for (var i = 0; i < 4; i++) {
 }
 
 //health
-ul.children[0].children[0].children[0].className = 'character-list__item-health__mordecai health-line';
-ul.children[1].children[0].children[0].className = 'character-list__item-health__roland health-line';
-ul.children[2].children[0].children[0].className = 'character-list__item-health__lilith health-line';
-ul.children[3].children[0].children[0].className = 'character-list__item-health__brick health-line';
+for (var m = 0; m <= 3; m++) {
+    ul.children[m].children[0].children[0].className = 'health-line';
+}
 
 //stamina
-ul.children[0].children[1].children[0].className = 'character-list__item-stamina__mordecai stamina-line';
-ul.children[1].children[1].children[0].className = 'character-list__item-stamina__roland stamina-line';
-ul.children[2].children[1].children[0].className = 'character-list__item-stamina__lilith stamina-line';
-ul.children[3].children[1].children[0].className = 'character-list__item-stamina__brick stamina-line';
+for (var g = 0; g <= 3; g++) {
+    ul.children[g].children[1].children[0].className = 'stamina-line';
+}
 
 //h3
 ul.children[0].children[2].innerText = 'Mordecai';
