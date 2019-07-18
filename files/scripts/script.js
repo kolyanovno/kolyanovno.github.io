@@ -6,79 +6,100 @@ var ul = document.createElement('ul');
 ul.className = 'character-list';
 divBody.appendChild(ul);
 
-for (var i = 0; i < 4; i++) {
-    var li = document.createElement('li');
-    li.className = 'character-list__item';
-    ul.appendChild(li);
-
-    for (var n = 0; n < 2; n++) {
-        var divFirstLi = document.createElement('div');
-        divFirstLi.className = 'character-list__item-line';
-        li.appendChild(divFirstLi);
-
-        var divSecondLi = document.createElement('div');
-        divFirstLi.appendChild(divSecondLi);
+var Unit = (function() {
+    function Unit() {
+        this.li = document.createElement('li');
+        this.li.className = 'character-list__item';
+        ul.appendChild(this.li);
     }
 
-    var h3 = document.createElement('h3');
-    h3.className = 'character-list__item-type';
+    Unit.prototype.divFirst = function() {
+        this.divFirstLi = document.createElement('div');
+        this.divFirstLi.className = 'character-list__item-line';
+        this.li.appendChild(this.divFirstLi);
+    }
 
-    var h6 = document.createElement('h6');
-    h6.className = 'character-list__item-type';
+    Unit.prototype.divSecond = function(lineClass) {
+        this.divSecondLi = document.createElement('div');
+        this.divSecondLi.className = lineClass;
+        this.divFirstLi.appendChild(this.divSecondLi);
+    }
 
-    var link = document.createElement('a');
-    link.className = 'character-list__item-link';
+    Unit.prototype.name = function(name) {
+        this.h3 = document.createElement('h3');
+        this.h3.className = 'character-list__item-type';
+        this.h3.innerHTML = name;
+        this.li.appendChild(this.h3);
+    }
 
-    var image = document.createElement('img');
-    image.className = 'character-list__item-img';
+    Unit.prototype.type = function(type) {
+        this.h6 = document.createElement('h6');
+        this.h6.className = 'character-list__item-type';
+        this.h6.innerHTML = type;
+        this.li.appendChild(this.h6);
+    }
 
-    li.appendChild(h3);
-    li.appendChild(h6);
-    li.appendChild(link);
-    link.appendChild(image); 
-}
+    Unit.prototype.link = function(link) {
+        this.link = document.createElement('a');
+        this.link.className = 'character-list__item-link';
+        this.link.setAttribute('href', link);
+        this.li.appendChild(this.link);
+    }
 
-//health
-for (var m = 0; m <= 3; m++) {
-    ul.children[m].children[0].children[0].className = 'health-line';
-}
+    Unit.prototype.image = function(src, alt) {
+        this.image = document.createElement('img');
+        this.image.className = 'character-list__item-img';
+        this.image.setAttribute('src', src);
+        this.image.setAttribute('alt', alt);
+        this.link.appendChild(this.image);
+    }
 
-//stamina
-for (var g = 0; g <= 3; g++) {
-    ul.children[g].children[1].children[0].className = 'stamina-line';
-}
+    return Unit;
+}());
 
+//creating units
 
-//h3
-ul.children[0].children[2].innerText = 'Mordecai';
-ul.children[1].children[2].innerText = 'Roland';
-ul.children[2].children[2].innerText = 'Lilith';
-ul.children[3].children[2].innerText = 'Brick';
+var unit1 = new Unit();
+unit1.divFirst();
+unit1.divSecond('health-line');
+unit1.divFirst();
+unit1.divSecond('stamina-line');
+unit1.name('Mordecai');
+unit1.type('Hunter');
+unit1.link('https://borderlands.fandom.com/ru/wiki/%D0%9C%D0%BE%D1%80%D0%B4%D0%B5%D0%BA%D0%B0%D0%B9');
+unit1.image('files/images/mordecai.jpg', 'Mordecai');
 
-//h6
-ul.children[0].children[3].innerText = 'Hunter';
-ul.children[1].children[3].innerText = 'Soldier';
-ul.children[2].children[3].innerText = 'Siren';
-ul.children[3].children[3].innerText = 'Berserker';
+var unit2 = new Unit();
+unit2.divFirst();
+unit2.divSecond('health-line');
+unit2.divFirst();
+unit2.divSecond('stamina-line');
+unit2.name('Roland');
+unit2.type('Soldier');
+unit2.link('https://borderlands.fandom.com/ru/wiki/%D0%A0%D0%BE%D0%BB%D0%B0%D0%BD%D0%B4');
+unit2.image('files/images/roland.jpg', 'Roland');
 
-//links
-ul.children[0].children[4].setAttribute('href', 'https://borderlands.fandom.com/ru/wiki/%D0%9C%D0%BE%D1%80%D0%B4%D0%B5%D0%BA%D0%B0%D0%B9');
-ul.children[1].children[4].setAttribute('href', 'https://borderlands.fandom.com/ru/wiki/%D0%A0%D0%BE%D0%BB%D0%B0%D0%BD%D0%B4');
-ul.children[2].children[4].setAttribute('href', 'https://borderlands.fandom.com/ru/wiki/%D0%9B%D0%B8%D0%BB%D0%B8%D1%82');
-ul.children[3].children[4].setAttribute('href', 'https://borderlands.fandom.com/ru/wiki/%D0%91%D1%80%D0%B8%D0%BA');
+var unit3 = new Unit();
+unit3.divFirst();
+unit3.divSecond('health-line');
+unit3.divFirst();
+unit3.divSecond('stamina-line');
+unit3.name('Lilith');
+unit3.type('Siren');
+unit3.link('https://borderlands.fandom.com/ru/wiki/%D0%9B%D0%B8%D0%BB%D0%B8%D1%82');
+unit3.image('files/images/lilith.png', 'Lilith');
 
-//images
-ul.children[0].children[4].children[0].setAttribute('src', 'files/images/mordecai.jpg');
-ul.children[0].children[4].children[0].setAttribute('alt', 'Mordecai');
+var unit4 = new Unit();
+unit4.divFirst();
+unit4.divSecond('health-line');
+unit4.divFirst();
+unit4.divSecond('stamina-line');
+unit4.name('Brick');
+unit4.type('Berserker');
+unit4.link('https://borderlands.fandom.com/ru/wiki/%D0%91%D1%80%D0%B8%D0%BA');
+unit4.image('files/images/brick.png', 'Brick');
 
-ul.children[1].children[4].children[0].setAttribute('src', 'files/images/roland.jpg');
-ul.children[1].children[4].children[0].setAttribute('alt', 'Roland');
-
-ul.children[2].children[4].children[0].setAttribute('src', 'files/images/lilith.png');
-ul.children[2].children[4].children[0].setAttribute('alt', 'Lilith');
-
-ul.children[3].children[4].children[0].setAttribute('src', 'files/images/brick.png');
-ul.children[3].children[4].children[0].setAttribute('alt', 'Brick');
+//tap logic
 
 var listItems = [];
 listItems = document.getElementsByClassName('character-list__item');
@@ -98,7 +119,6 @@ function onClickHealts(i) {
     return function () {
         healthWidthList[i] -= 10;
         healthList[i].style.width = healthWidthList[i] + '%';
-        console.log(healthList[i].style.width);
         if (healthList[i].style.width === "0%") {
             listItems[i].style.display = "none";
         }
@@ -118,7 +138,6 @@ for (var i = 0; i < staminaWidthList.length; i++) {
 
 function onClickStamina(i) {
     return function () {
-        console.log(staminaList[i].style.width);
         staminaWidthList[i] -= 10;
         staminaList[i].style.width = staminaWidthList[i] + '%';
         if (staminaList[i].style.width === "0%") {
