@@ -5,77 +5,52 @@
 
 .page-body {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 0;
     margin: 0 auto;
-    background-image: url("../images/bg.jpg");
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #060F17;
     font-family: 'Roboto-Regular', sans-serif;
-    cursor: url(https://images.wikia.nocookie.net/__cb20141119082947/borderlands/ru/images/7/70/B6m.png),pointer;
 }
 
 .character-list {
-    padding: 0;
+    padding: 50px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 80%;
+    width: 90%;
 }
 
 .character-list__item {
     list-style: none;
-    margin: 20% auto 0;
-    padding-bottom: 10px;
+    padding: 15px;
+    margin: 10px;
     width: 300px;
-    height: 100%;
-    background-color: rgba(255, 255, 255, .6);
-    border-radius: 10px;
+    height: 650px;
+    background-color: #C7CDD4;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transition: .5s;
-}
-
-.character-list__item:hover {
-    width: 350px;
-}
-
-.character-list__item-line {
-    border-radius: 3px;
-    border: 1px solid #000;
-    width: 250px;
-    height: 5px;
-    margin: 10px auto 5px;
-}
-
-.health-line {
-    border-radius: 3px;
-    background-color: #cc0000;
-    width: 100%;
-    height: 5px;
-}
-
-.stamina-line {
-    border-radius: 3px;
-    background-color: #ffcc00;
-    width: 100%;
-    height: 5px;
-}
-
-.character-list__item-type {
-    padding: 0;
-    margin: 5px;
-}
-
-.character-list__item-link {
-    font-size: 0;
-    text-decoration: none;
-    text-align: center;
-    cursor: url(https://images.wikia.nocookie.net/__cb20141119082947/borderlands/ru/images/7/70/B6m.png),pointer;
 }
 
 .character-list__item-img {
-    width: 90%;
+    margin-bottom: 10px;
+}
+
+.pagination {
+    padding: 10px;
+    width: 40%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 15px auto;
+} 
+
+.pagination a {
+color: #525C66;
+text-decoration: none;
+}
+
+.pagination span {
+    color: #fff;
 }
